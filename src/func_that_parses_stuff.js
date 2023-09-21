@@ -1,12 +1,13 @@
 import getWeatherData from "./apiMethods";
 
-let forecastData;
+let forecastData="";
 
 const setCityVal = async(city) => {
     
     forecastData = await getWeatherData(city);
-    console.log(forecastData);
 }
+
+const checkError = () => Object.hasOwn(forecastData,"error");
 
 const getLocation = () => ({
         location : `${forecastData.location.name}, ${forecastData.location.country}`, 
@@ -41,4 +42,4 @@ const getDayForecast = () => {
 }
 
 
-export {setCityVal, getLocation, getCurrentData, getDayForecast};
+export {setCityVal, getLocation, getCurrentData, getDayForecast, checkError};
